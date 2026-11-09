@@ -4,7 +4,28 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>shopverse</title>
+    <meta name="theme-color" content="#7c3aed" />
+    <meta
+      name="description"
+      content="Shopverse is a modern demo storefront built with React, Tailwind CSS and Framer Motion."
+    />
+    <meta property="og:title" content="Shopverse | Modern Shopping Demo" />
+    <meta
+      property="og:description"
+      content="Browse products, filter, add to cart and try a full checkout flow."
+    />
+    <title>Shopverse | Modern Shopping Demo</title>
+
+    <!-- Page load hote hi dark/light lagao, taake safed jhalak (flash) na aaye -->
+    <script>
+      try {
+        var saved = localStorage.getItem("shopverse-theme");
+        var dark = saved
+          ? saved === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        if (dark) document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>
