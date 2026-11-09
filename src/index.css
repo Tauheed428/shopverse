@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Tailwind v4 mein class-based dark mode ke liye ye line zaroori hai.
+   Jab <html class="dark"> ho, to dark: wali classes chalengi. */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---------- BRAND COLORS ----------
+   Poori app mein bg-brand-600, text-brand-500 etc. use hoga.
+   Accent badalna ho (jaise Cyan) to sirf yahan ke hex values badal dena. */
+@theme {
+  --color-brand-50: #f5f3ff;
+  --color-brand-100: #ede9fe;
+  --color-brand-200: #ddd6fe;
+  --color-brand-300: #c4b5fd;
+  --color-brand-400: #a78bfa;
+  --color-brand-500: #8b5cf6;
+  --color-brand-600: #7c3aed;
+  --color-brand-700: #6d28d9;
+  --color-brand-800: #5b21b6;
+  --color-brand-900: #4c1d95;
+}
+
+/* ---------- BASE STYLES ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased transition-colors duration-300
+      dark:bg-slate-950 dark:text-slate-100;
+  }
+}
+
+/* ---------- REUSABLE CLASSES ---------- */
+@layer components {
+  /* Glassmorphism surface (Navbar ke liye) */
+  .glass {
+    @apply border border-gray-200/70 bg-white/70 backdrop-blur-xl
+      dark:border-gray-800/70 dark:bg-slate-900/60;
+  }
+
+  /* Elevated card (ProductCard ke liye) */
+  .card {
+    @apply rounded-2xl border border-gray-200 bg-white shadow-sm
+      transition-shadow duration-300 hover:shadow-xl hover:shadow-brand-500/10
+      dark:border-gray-800 dark:bg-slate-900;
+  }
+
+  /* Scrollbar chhupane ke liye (Step 5: category pills mein kaam aayega) */
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
